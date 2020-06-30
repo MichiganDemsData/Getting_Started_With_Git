@@ -27,3 +27,5 @@ You'll be redirected to the associated github repository like this.
 After a moment of this:
 
 You'll be redirected to your new personal copy of the repository:
+### git clone
+Now that you have your own copy (by forking), we're going to download this copy to your local computer using git clone.
