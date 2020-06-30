@@ -17,3 +17,7 @@ If we have made changes that we would like to save to our version control histor
 Now that you have a brief overview of what we're about to dive into, let's go through the process step by step.
 ## Open up a Bash Shell and Create a Projects Folder / Subfolder
 To use Git, we're going back to the bash shell (mac: terminal, windows: git bash) once again! To start:
+- Create a folder on your computer for your course materials and navigate into it (preferably using mkdir and cd)
+- Then create a subfolder titled "Bash_and_Git" (or whatever you find to be an appropriate title) and navigate into that
+- Return to your web browser and navigate to the lesson you want to download
+- Click the GitHub icon
