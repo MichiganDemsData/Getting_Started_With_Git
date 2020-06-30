@@ -21,3 +21,9 @@ To use Git, we're going back to the bash shell (mac: terminal, windows: git bash
 - Then create a subfolder titled "Bash_and_Git" (or whatever you find to be an appropriate title) and navigate into that
 - Return to your web browser and navigate to the lesson you want to download
 - Click the GitHub icon
+You'll be redirected to the associated github repository like this.
+
+- Click the fork button, as shown above in order to create a copy to your personal account which you can edit and update.
+After a moment of this:
+
+You'll be redirected to your new personal copy of the repository:
