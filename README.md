@@ -15,3 +15,5 @@ From there, Git will allow us to continue to track and incorporate changes that 
 git status allows us to see if we have made any changes.
 If we have made changes that we would like to save to our version control history, we can then use git add to add the changed files to the version history and git commit to finalize the process. Finally, we can then use git push to push our changes to the web so that we or collaborators can access them from anywhere.
 Now that you have a brief overview of what we're about to dive into, let's go through the process step by step.
+## Open up a Bash Shell and Create a Projects Folder / Subfolder
+To use Git, we're going back to the bash shell (mac: terminal, windows: git bash) once again! To start:
