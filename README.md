@@ -7,6 +7,7 @@ You will be able to:
 - Use git clone to clone a repository
 - Use git add, git commit, and git push to make changes to a repository
 - Compare local and remote repositories
+
 ### Some terminology and concepts
 The first thing we'll look at is forking, a concept from the GitHub platform.
 Forking is the process of making a personal copy on GitHub.
