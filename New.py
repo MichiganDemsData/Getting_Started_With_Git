@@ -1,1 +1,3 @@
 import numpy
+
+java = null
