@@ -1,6 +1,5 @@
 # Getting Started with Git
 
-
 # Version Control 101
 ## Introduction
 > “The past is never where you think you left it.” — Katherine Anne Porter
@@ -8,10 +7,12 @@
 Version Control is the process of storing multiple versions of a single project, allowing each version to be recalled at a later date.  
 
 There are a lot of different ways to do version control. You could save a new file every time you make a change, time-stamp that file, and place all of those files into a timestamped folder. You could track all of your changes in a spreadsheet with copious notes. Or you could use dedicated version control software. Guess which method programmers use?
+
 ### Objectives
 You will be able to:
 Describe the purpose of version control and Git
-Why Use Version Control?  
+
+### Why Use Version Control?  
 
 Let's think about the future for a second. You just deployed a new chat feature for the app you're working on. Suddenly, your boss runs over to your desk: "Wait! We can't deploy the chat yet! Revert! Revert!"  
 
@@ -240,11 +241,11 @@ A commit is a permanent moment in time in your Git history. A commit creates a n
 Pushing is the process of taking your local code and commits and syncing them, or uploading them, to GitHub. You're updating the GitHub remote (remotes are just fancy names for copies of the repository), generally your fork, represented by a remote named origin, by pushing your code to the remote. The Git command to do this is simply git push. When you git push from within a Git repository, it will take all the commits that you have locally and push them to the online remote.
 
 ### Additional Resources
-[Git Cheatsheet](https://www.git-tower.com/blog/git-cheat-sheet/)
-[Git Best Practices](https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices)
-[Understanding the GitHub Flow](https://guides.github.com/introduction/flow)
-[Hello World GitHub](https://guides.github.com/activities/hello-world)
+[Git Cheatsheet](https://www.git-tower.com/blog/git-cheat-sheet/)  
+[Git Best Practices](https://www.git-tower.com/learn/git/ebook/en/command-line/appendix/best-practices)  
+[Understanding the GitHub Flow](https://guides.github.com/introduction/flow)  
+[Hello World GitHub](https://guides.github.com/activities/hello-world)  
 [Forking on GitHub](https://learngitbranching.js.org/)
-[Git - The Simple Guide](http://rogerdudler.github.io/git-guide/)
-[Git Immersion](http://gitimmersion.com/)
+[Git - The Simple Guide](http://rogerdudler.github.io/git-guide/)  
+[Git Immersion](http://gitimmersion.com/)  
 [Try Git](http://try.github.com/)
