@@ -89,7 +89,9 @@ Configure your Git username and email using the following commands, replacing Em
 
 ## Create your SSH key
 If you’ve set up an SSH or a different Personal Access Token you can skip this step.
-https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh  
+
 You should create an SSH key to use in place of a password with the command line or with the API. With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
 Check for currently existing SSH keys. If there are keys you don’t recognise or don’t use anymore delete them.
 
@@ -101,38 +103,54 @@ $ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
 
 This creates a new ssh key, using the provided email as a label.
 
-> Generating public/private rsa key pair.
+Generating public/private rsa key pair.
 When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
-> Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+
+    Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+
 At the prompt, type a secure passphrase. For more information, see "Working with SSH key passphrases". Passphrases are not required. If you do make one store it in your password manager (1Password, Lastpass)
-> Enter passphrase (empty for no passphrase): [Type a passphrase]
-> Enter same passphrase again: [Type passphrase again]
+
+    Enter passphrase (empty for no passphrase): [Type a passphrase]
+    Enter same passphrase again: [Type passphrase again]
+
 Adding your SSH key to the ssh-agent. Start the ssh-agent in the background.
-$ eval "$(ssh-agent -s)"
-> Agent pid 59566
+
+    $ eval "$(ssh-agent -s)"
+    Agent pid 59566
+
 If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
 First, check to see if your ~/.ssh/config file exists in the default location.
 
-$ open ~/.ssh/config
-> The file /Users/you/.ssh/config does not exist.
+    $ open ~/.ssh/config
+    The file /Users/you/.ssh/config does not exist.
+
 If the file doesn't exist, create the file.
-$ touch ~/.ssh/config
+
+    $ touch ~/.ssh/config
+
 Open your ~/.ssh/config file, then modify the file, replacing ~/.ssh/id_rsa if you are not using the default location and name for your id_rsa key.
-Host *
- AddKeysToAgent yes
-  UseKeychain yes
- IdentityFile ~/.ssh/id_rsa
+
+    Host *
+    AddKeysToAgent yes
+    UseKeychain yes
+    IdentityFile ~/.ssh/id_rsa
 
 
 Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
-$ ssh-add -K ~/.ssh/id_rsa
+
+    $ ssh-add -K ~/.ssh/id_rsa
+
 Adding a new SSH key to your GitHub account. Copy the SSH key to your clipboard.
+
 If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
-$ pbcopy < ~/.ssh/id_rsa.pub
-#Copies the contents of the id_rsa.pub file to your clipboard
+
+    $ pbcopy < ~/.ssh/id_rsa.pub
+    # Copies the contents of the id_rsa.pub file to your clipboard
+
 Tip: If pbcopy isn't working, you can locate the hidden .ssh folder, open the file in your favorite text editor, and copy it to your clipboard.
 
 In the upper-right corner of any page, click your profile photo, then click Settings > SSH and GPG keys > New SSH key or Add SSH key.
+
 In the title include a descriptive name for your key. Paste your key into the key field.
 
 ## Turn on 2-Factor Authentication
