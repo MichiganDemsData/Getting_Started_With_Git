@@ -87,59 +87,54 @@ Configure your Git username and email using the following commands, replacing Em
     $ git config --global user.name "Eric Ma"
     $ git config --global user.email "eric.ma@digidems.com"
 
-## Create your Personal Access Token
-> If you’ve set up an SSH or a different Personal Access Token you can skip this step.  
-
-You should create a personal access token to use in place of a password with the command line or with the API. Personal access tokens (PATs) are an alternative to using passwords for authentication to GitHub. As a security precaution, GitHub automatically removes personal access tokens that haven't been used in a year.  
-
-Create your token. On the upper-right corner of your Github page go to Settings
-
-On the left-hand sidebar find Developer Settings > Personal Access Tokens
-
-Generate and name your token.
-
-Select the scopes, or permissions, you'd like to grant this token. To use your token to access repositories from the command line, select repo.
-
-Click Generate token.
-
-Click the clipboard to copy the token to your clipboard. For security reasons, after you navigate off the page, you will not be able to see the token again.
-
-Open 1Password and under Github click Edit. You can see your GitHub password by holding down the alt key. Do not change your current password. Under Section > new field click the pull down and add a Password. In the new password field paste and save your Personal Access Token. You can label the new section ‘PAT’.
-
-The next time git prompts you for a password from the Command Line, open 1Password and copy and paste your Personal Access Token from your notes.
-
-    $ git clone https://github.com/username/repo.git
-    Username: your_username  
-    Password: your_token  
-Personal access tokens can only be used for HTTPS Git operations. If your repository uses an SSH remote URL, you will need to switch the remote from SSH to HTTPS.  
-## (Optional) Install the git-credential-osxkeychain helper
-Bitbucket supports pushing and pulling your Git repositories over both SSH and HTTPS. To work with a private repository over HTTPS, you must supply a username and password each time you push or pull. The git-credential-osxkeychain helper allows you to cache your username and password in the OSX keychain, so you don't have to retype it each time.  
-
-Check your terminal to see if git-credential-osxkeychain is already installed
-
-$ git credential-osxkeychain
-usage: git credential-osxkeychain <get|store|erase>
-
-If you receive a usage statement, skip to step 4. If the helper is not installed, go to step 2
+## Create your SSH key
+If you’ve set up an SSH or a different Personal Access Token you can skip this step.
+https://docs.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+You should create an SSH key to use in place of a password with the command line or with the API. With SSH keys, you can connect to GitHub without supplying your username or password at each visit.
+Check for currently existing SSH keys. If there are keys you don’t recognise or don’t use anymore delete them.
 
 
-Use curl to download git-credential-osxkeychain (or download it via your browser) and move it to /usr/local/bin:
+Generate a new SSH key and adding it to the ssh-agent. Open Terminal.
+Paste the text below, substituting in your GitHub email address.
 
-    $ curl -O http://github-media-downloads.s3.amazonaws.com/osx/git-credential-osxkeychain
-    $ sudo mv git-credential-osxkeychain /usr/local/bin/
+$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
+
+This creates a new ssh key, using the provided email as a label.
+
+> Generating public/private rsa key pair.
+When you're prompted to "Enter a file in which to save the key," press Enter. This accepts the default file location.
+> Enter a file in which to save the key (/Users/you/.ssh/id_rsa): [Press enter]
+At the prompt, type a secure passphrase. For more information, see "Working with SSH key passphrases". Passphrases are not required. If you do make one store it in your password manager (1Password, Lastpass)
+> Enter passphrase (empty for no passphrase): [Type a passphrase]
+> Enter same passphrase again: [Type passphrase again]
+Adding your SSH key to the ssh-agent. Start the ssh-agent in the background.
+$ eval "$(ssh-agent -s)"
+> Agent pid 59566
+If you're using macOS Sierra 10.12.2 or later, you will need to modify your ~/.ssh/config file to automatically load keys into the ssh-agent and store passphrases in your keychain.
+First, check to see if your ~/.ssh/config file exists in the default location.
+
+$ open ~/.ssh/config
+> The file /Users/you/.ssh/config does not exist.
+If the file doesn't exist, create the file.
+$ touch ~/.ssh/config
+Open your ~/.ssh/config file, then modify the file, replacing ~/.ssh/id_rsa if you are not using the default location and name for your id_rsa key.
+Host *
+ AddKeysToAgent yes
+  UseKeychain yes
+ IdentityFile ~/.ssh/id_rsa
 
 
-Make the file an executable:
+Add your SSH private key to the ssh-agent and store your passphrase in the keychain. If you created your key with a different name, or if you are adding an existing key that has a different name, replace id_rsa in the command with the name of your private key file.
+$ ssh-add -K ~/.ssh/id_rsa
+Adding a new SSH key to your GitHub account. Copy the SSH key to your clipboard.
+If your SSH key file has a different name than the example code, modify the filename to match your current setup. When copying your key, don't add any newlines or whitespace.
+$ pbcopy < ~/.ssh/id_rsa.pub
+#Copies the contents of the id_rsa.pub file to your clipboard
+Tip: If pbcopy isn't working, you can locate the hidden .ssh folder, open the file in your favorite text editor, and copy it to your clipboard.
 
-    $ chmod u+x /usr/local/bin/git-credential-osxkeychain
+In the upper-right corner of any page, click your profile photo, then click Settings > SSH and GPG keys > New SSH key or Add SSH key.
+In the title include a descriptive name for your key. Paste your key into the key field.
 
-
-Configure git to use the osxkeychain credential helper.
-
-    $ git config --global credential.helper osxkeychain
-
-
-The next time Git prompts you for a username and password, it will cache them in your keychain for future use. Use your Personal Access Token in place of a password.
 ## Turn on 2-Factor Authentication
 Two-factor will be required for joining an organization.
 
